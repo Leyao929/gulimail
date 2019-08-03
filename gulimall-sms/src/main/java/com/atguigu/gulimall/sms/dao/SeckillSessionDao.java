@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 
  * @author leyao
  * @email hzb@leyao.com
- * @date 2019-08-01 20:51:09
+ * @date 2019-08-03 13:28:32
  */
 @Mapper
 public interface SeckillSessionDao extends BaseMapper<SeckillSessionEntity> {

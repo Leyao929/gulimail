@@ -11,7 +11,7 @@ import com.atguigu.gulimall.commons.bean.QueryCondition;
  *
  * @author leyao
  * @email hzb@leyao.com
- * @date 2019-08-01 19:47:30
+ * @date 2019-08-03 13:21:08
  */
 public interface SkuImagesService extends IService<SkuImagesEntity> {
 

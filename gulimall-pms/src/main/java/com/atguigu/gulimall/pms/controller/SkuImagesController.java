@@ -24,7 +24,7 @@ import com.atguigu.gulimall.pms.service.SkuImagesService;
  *
  * @author leyao
  * @email hzb@leyao.com
- * @date 2019-08-01 19:47:30
+ * @date 2019-08-03 13:21:08
  */
 @Api(tags = "sku图片 管理")
 @RestController

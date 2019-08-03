@@ -24,7 +24,7 @@ import com.atguigu.gulimall.pms.service.CommentReplayService;
  *
  * @author leyao
  * @email hzb@leyao.com
- * @date 2019-08-01 19:47:30
+ * @date 2019-08-03 13:21:08
  */
 @Api(tags = "商品评价回复关系 管理")
 @RestController

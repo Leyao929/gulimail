@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.Map;
 
 
 import com.atguigu.gulimall.commons.bean.PageVo;
@@ -23,7 +24,7 @@ import com.atguigu.gulimall.pms.service.BrandService;
  *
  * @author leyao
  * @email hzb@leyao.com
- * @date 2019-08-01 19:47:30
+ * @date 2019-08-03 13:21:08
  */
 @Api(tags = "品牌 管理")
 @RestController
@@ -39,7 +40,6 @@ public class BrandController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('pms:brand:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
-
         PageVo page = brandService.queryPage(queryCondition);
 
         return Resp.ok(page);
