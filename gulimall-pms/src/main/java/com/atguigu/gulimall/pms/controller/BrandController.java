@@ -39,6 +39,7 @@ public class BrandController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('pms:brand:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
+
         PageVo page = brandService.queryPage(queryCondition);
 
         return Resp.ok(page);

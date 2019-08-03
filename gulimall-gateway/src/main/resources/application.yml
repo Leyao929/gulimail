@@ -1,0 +1,41 @@
+spring:
+  cloud:
+    gateway:
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowCredentials: true
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+
+      routes:
+        - id: gulimall-oms-route
+          uri: lb://gulimall-oms
+          predicates:
+            - Path=/oms/**
+
+        - id: gulimall-sms-route
+          uri: lb://gulimall-sms
+          predicates:
+            - Path=/sms/**
+
+        - id: gulimall-ums-route
+          uri: lb://gulimall-ums
+          predicates:
+            - Path=/ums/**
+
+        - id: gulimall-wms-route
+          uri: lb://gulimall-wms
+          predicates:
+            - Path=/wms/**
+
+        - id: gulimall-pms-route
+          uri: lb://gulimall-pms
+          predicates:
+            - Path=/pms/**
+
+
+

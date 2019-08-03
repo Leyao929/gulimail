@@ -1,16 +1,18 @@
-package com.atguigu.gulimall.pms;
+package com.atguigu.gulimall.sms;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@MapperScan(basePackages = "com.atguigu.gulimall.pms.dao")
 @SpringBootApplication
-public class GulimallPmsApplication {
+@MapperScan("com.atguigu.gulimall.sms.dao")
+@RefreshScope
+public class GulimailSmsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GulimallPmsApplication.class, args);
+        SpringApplication.run(GulimailSmsApplication.class, args);
     }
 
 }

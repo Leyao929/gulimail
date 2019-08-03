@@ -13,11 +13,12 @@
         <module>guli-generator</module>
         <module>gulimall-core</module>
         <module>gulimall-admin</module>
-        <module>gulimail-oms</module>
+        <module>gulimall-oms</module>
         <module>gulimall-pms</module>
-        <module>gulimail-sms</module>
-        <module>gulimail-ums</module>
-        <module>gulimail-wms</module>
+        <module>gulimall-sms</module>
+        <module>gulimall-ums</module>
+        <module>gulimall-wms</module>
+        <module>gulimall-gateway</module>
     </modules>
 
 
