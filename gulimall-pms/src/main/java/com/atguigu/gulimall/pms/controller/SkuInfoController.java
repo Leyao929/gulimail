@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -28,10 +29,23 @@ import com.atguigu.gulimall.pms.service.SkuInfoService;
  */
 @Api(tags = "sku信息 管理")
 @RestController
-@RequestMapping("pms/skuinfo")
+@RequestMapping("/pms/skuinfo")
 public class SkuInfoController {
     @Autowired
     private SkuInfoService skuInfoService;
+
+
+    ///pms/skuinfo/list/spu/{spuId}
+
+    @ApiOperation("获得某个spu下所有的sku信息")
+    @GetMapping("/list/spu/{spuId}")
+    public Resp<List<SkuInfoEntity>> getAllSkuInfo(@PathVariable("spuId") Long spuId){
+
+        List<SkuInfoEntity> list = skuInfoService.selectSkuInfoBySpuId(spuId);
+
+        return Resp.ok(list);
+
+    }
 
     /**
      * 列表

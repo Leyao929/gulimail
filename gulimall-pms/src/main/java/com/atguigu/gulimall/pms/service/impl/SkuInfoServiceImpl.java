@@ -1,6 +1,8 @@
 package com.atguigu.gulimall.pms.service.impl;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -25,6 +27,18 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoDao, SkuInfoEntity> i
         );
 
         return new PageVo(page);
+    }
+
+    @Override
+    public List<SkuInfoEntity> selectSkuInfoBySpuId(Long spuId) {
+
+
+        QueryWrapper<SkuInfoEntity> queryWrapper = new QueryWrapper<>();
+
+        queryWrapper.eq("spu_id",spuId);
+
+       return baseMapper.selectList(queryWrapper);
+
     }
 
 }

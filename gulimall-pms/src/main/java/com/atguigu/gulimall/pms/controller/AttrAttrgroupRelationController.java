@@ -33,6 +33,20 @@ public class AttrAttrgroupRelationController {
     @Autowired
     private AttrAttrgroupRelationService attrAttrgroupRelationService;
 
+
+    ///pms/attrattrgrouprelation/delete/attr
+    @ApiOperation("删除关联关系")
+    @PostMapping("/delete/attr")
+    public Resp deleteRelation(@RequestBody AttrAttrgroupRelationEntity[] realtions){
+
+        attrAttrgroupRelationService.deleteByRelations(realtions);
+
+        return Resp.ok(null);
+
+    }
+
+
+
     /**
      * 列表
      */

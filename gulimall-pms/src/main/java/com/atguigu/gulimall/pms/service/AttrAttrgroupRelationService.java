@@ -1,9 +1,12 @@
 package com.atguigu.gulimall.pms.service;
 
+import com.atguigu.gulimall.pms.entity.AttrGroupEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.atguigu.gulimall.pms.entity.AttrAttrgroupRelationEntity;
 import com.atguigu.gulimall.commons.bean.PageVo;
 import com.atguigu.gulimall.commons.bean.QueryCondition;
+
+import java.util.List;
 
 
 /**
@@ -16,5 +19,11 @@ import com.atguigu.gulimall.commons.bean.QueryCondition;
 public interface AttrAttrgroupRelationService extends IService<AttrAttrgroupRelationEntity> {
 
     PageVo queryPage(QueryCondition params);
+
+    List<AttrAttrgroupRelationEntity> selectByGroupId(Integer attrGroupId);
+
+    void deleteByRelations(AttrAttrgroupRelationEntity[] realtions);
+
+    AttrGroupEntity selectGroupByAttrId(Long attrId);
 }
 

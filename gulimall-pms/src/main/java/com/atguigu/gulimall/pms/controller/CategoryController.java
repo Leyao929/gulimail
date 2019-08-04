@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,30 @@ import com.atguigu.gulimall.pms.service.CategoryService;
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
+
+    ///pms/category/list/children/tree/{catId}
+    @ApiOperation("获取某个分类的所有子分类")
+    @GetMapping("/list/children/tree/{catId}")
+    public Resp getAllChildren(@PathVariable("catId") Integer catId){
+
+
+       List<CategoryEntity> data =  categoryService.getChildren(catId);
+
+        return Resp.ok(data);
+    }
+
+
+    ///pms/category/list/tree?t=1564819900473&level=0
+    @ApiOperation("查询某个等级的所有分类")
+    @GetMapping("/list/tree")
+    public Resp getAllCategory(@RequestParam("level") Integer level){
+
+        List<CategoryEntity> data = categoryService.categoryList(level);
+
+        return Resp.ok(data);
+    }
+
 
     /**
      * 列表

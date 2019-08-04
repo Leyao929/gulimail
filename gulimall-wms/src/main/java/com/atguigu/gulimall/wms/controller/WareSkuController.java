@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.wms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -32,6 +33,19 @@ import com.atguigu.gulimall.wms.service.WareSkuService;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    ///wms/waresku/sku/1
+
+    @ApiOperation("查询某个sku的库存信息")
+    @GetMapping("/sku/{skuId}")
+    public Resp<List<WareSkuEntity>> getSkuStockBySKuId(@PathVariable Long skuId){
+
+       List<WareSkuEntity> data =  wareSkuService.getSkuStock(skuId);
+
+       return Resp.ok(data);
+
+    }
+
 
     /**
      * 列表

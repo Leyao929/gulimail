@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -28,10 +29,26 @@ import com.atguigu.gulimall.pms.service.SpuInfoService;
  */
 @Api(tags = "spu信息 管理")
 @RestController
-@RequestMapping("pms/spuinfo")
+@RequestMapping("/pms/spuinfo")
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+
+
+    ///pms/spuinfo/simple/search?t=1564820547765&page=1&limit=10&key=&catId=0
+    @ApiOperation("按照spuid,spuname,分类id检索商品")
+    @GetMapping("/simple/search")
+    public Resp<PageVo> spuInfoList(QueryCondition queryCOndition,String key,Long catId){
+
+        if(catId == null){
+            return Resp.fail(null);
+
+        }
+
+        PageVo pageVo = spuInfoService.searchSpuInfo(queryCOndition, key, catId);
+
+        return Resp.ok(pageVo);
+    }
 
     /**
      * 列表
