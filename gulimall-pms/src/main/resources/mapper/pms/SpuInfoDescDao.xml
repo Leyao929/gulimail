@@ -9,5 +9,10 @@
         <result property="decript" column="decript"/>
     </resultMap>
 
+    <select id="insertInfo" resultMap="spuInfoDescMap">
+
+        insert into pms_spu_info_desc(spu_id,decript) value(#{spuInfoDescEntity.spuId},#{spuInfoDescEntity.decript})
+
+    </select>
 
 </mapper>

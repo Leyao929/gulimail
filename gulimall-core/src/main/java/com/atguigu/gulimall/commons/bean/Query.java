@@ -33,7 +33,7 @@ public class Query<T> {
     public IPage<T> getPage(QueryCondition params, String defaultOrderField, boolean isAsc) {
         //分页参数
         long curPage = 1;
-        long limit = 10;
+        long limit = 4;
 
         if(params.getPage() != null){
             curPage = params.getPage();

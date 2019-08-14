@@ -50,7 +50,7 @@ public class AttrGroupController {
 
 
     ///pms/attrgroup/list/category/166?t=1564827154997&limit=10&page=1
-    @ApiOperation("查询某个三级分类下的所有属性分组")
+    @ApiOperation("查询某个三级分类下的所有属性分组以及分组的所有属性信息")
     @GetMapping("/list/category/{catId}")
     public Resp<PageVo> getGroupInfo(QueryCondition queryCondition,@PathVariable("catId") Integer catId){
 

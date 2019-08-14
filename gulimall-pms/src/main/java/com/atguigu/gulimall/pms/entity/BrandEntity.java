@@ -2,10 +2,11 @@ package com.atguigu.gulimall.pms.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -26,6 +27,7 @@ public class BrandEntity implements Serializable {
 	 */
 	@TableId
 	@ApiModelProperty(name = "brandId",value = "品牌id")
+	@JsonSerialize(using = ToStringSerializer.class)
 	private Long brandId;
 	/**
 	 * 品牌名

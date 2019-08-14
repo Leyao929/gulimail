@@ -17,4 +17,51 @@
     </resultMap>
 
 
+    <!--getCategoryChildrensAndSubsById-->
+
+    <resultMap type="com.atguigu.gulimall.pms.vo.CategoryWithChildrensVo" id="categoryVoMap">
+        <result property="catId" column="cat_id"/>
+        <result property="name" column="name"/>
+        <result property="parentCid" column="parent_cid"/>
+        <result property="catLevel" column="cat_level"/>
+        <result property="showStatus" column="show_status"/>
+        <result property="sort" column="sort"/>
+        <result property="icon" column="icon"/>
+        <result property="productUnit" column="product_unit"/>
+        <result property="productCount" column="product_count"/>
+        <collection property="subs" select="getCategoryChildrensAndSubsById" column="cat_id"></collection>
+    </resultMap>
+
+    <select id="getCategoryChildrensAndSubsById" resultMap="categoryVoMap">
+
+        SELECT * FROM `pms_category` where parent_cid = #{id}
+
+    </select>
+
+
+<!--    &lt;!&ndash;   我们要为自定义的类型编写结果集映射 &ndash;&gt;-->
+<!--    <resultMap type="com.atguigu.gulimall.pms.vo.CategoryWithChildrensVo" id="categoryWithChildrenVo">-->
+<!--        <result property="catId" column="cat_id"/>-->
+<!--        <result property="name" column="name"/>-->
+<!--        <result property="parentCid" column="parent_cid"/>-->
+<!--        <result property="catLevel" column="cat_level"/>-->
+<!--        <result property="showStatus" column="show_status"/>-->
+<!--        <result property="sort" column="sort"/>-->
+<!--        <result property="icon" column="icon"/>-->
+<!--        <result property="productUnit" column="product_unit"/>-->
+<!--        <result property="productCount" column="product_count"/>-->
+<!--        &lt;!&ndash;        subs   select：调用一个查询去做事&ndash;&gt;-->
+<!--        <collection property="subs" select="selectCategoryChildrenWithChildrens" column="cat_id">-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+
+<!--    &lt;!&ndash;List<CategoryWithChildrensVo> selectCategoryChildrenWithChildrens(Integer id);&ndash;&gt;-->
+
+<!--    &lt;!&ndash; mybatis支持的无限极递归查询&ndash;&gt;-->
+<!--    &lt;!&ndash;   查询某个分类的子分类 &ndash;&gt;-->
+<!--    <select id="selectCategoryChildrenWithChildrens" resultMap="categoryWithChildrenVo">-->
+<!--        SELECT * FROM `pms_category` WHERE parent_cid=#{id}-->
+<!--    </select>-->
+
+
 </mapper>

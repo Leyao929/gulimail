@@ -1,6 +1,7 @@
 package com.atguigu.gulimall.pms.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,8 +9,10 @@ import java.util.Map;
 import com.atguigu.gulimall.commons.bean.PageVo;
 import com.atguigu.gulimall.commons.bean.QueryCondition;
 import com.atguigu.gulimall.commons.bean.Resp;
+import com.atguigu.gulimall.pms.vo.ProductSaveVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +36,20 @@ import com.atguigu.gulimall.pms.service.SpuInfoService;
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+
+
+    /**
+     * /pms/spuinfo/updateStatus/{spuId}
+     */
+    @ApiOperation("商品上架下架")
+    @GetMapping("/updateStatus/{spuId}")
+    public Resp<Object> updateSpuStatu(@RequestParam("status")Integer status,@PathVariable("spuId")Long spuId){
+
+
+        spuInfoService.updateSpuStatu(status,spuId);
+
+        return Resp.ok(null);
+    }
 
 
     ///pms/spuinfo/simple/search?t=1564820547765&page=1&limit=10&key=&catId=0
@@ -76,13 +93,18 @@ public class SpuInfoController {
     }
 
     /**
-     * 保存
+     * 保存  /pms/spuinfo/save  保存一个商品信息
      */
     @ApiOperation("保存")
     @PostMapping("/save")
     @PreAuthorize("hasAuthority('pms:spuinfo:save')")
-    public Resp<Object> save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
+    public Resp<Object> save(@RequestBody ProductSaveVo productSaveVo){
+
+        //实现商品信息保存功能
+
+        spuInfoService.insert(productSaveVo);
+
+
 
         return Resp.ok(null);
     }

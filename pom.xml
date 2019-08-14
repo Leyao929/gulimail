@@ -19,6 +19,7 @@
         <module>gulimall-ums</module>
         <module>gulimall-wms</module>
         <module>gulimall-gateway</module>
+        <module>gulimall-search</module>
     </modules>
 
 

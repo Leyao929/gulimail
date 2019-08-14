@@ -42,6 +42,7 @@ public class BrandController {
     public Resp<PageVo> list(QueryCondition queryCondition) {
         PageVo page = brandService.queryPage(queryCondition);
 
+        System.out.println(page);
         return Resp.ok(page);
     }
 

@@ -40,6 +40,7 @@ public class SpuCommentController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('pms:spucomment:list')")
     public Resp<PageVo> list(QueryCondition queryCondition) {
+
         PageVo page = spuCommentService.queryPage(queryCondition);
 
         return Resp.ok(page);

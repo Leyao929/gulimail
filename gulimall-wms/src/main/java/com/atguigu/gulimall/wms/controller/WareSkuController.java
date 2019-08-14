@@ -1,5 +1,6 @@
 package com.atguigu.gulimall.wms.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,9 @@ import java.util.Map;
 import com.atguigu.gulimall.commons.bean.PageVo;
 import com.atguigu.gulimall.commons.bean.QueryCondition;
 import com.atguigu.gulimall.commons.bean.Resp;
+import com.atguigu.gulimall.commons.to.es.SkuStockVo;
+import com.atguigu.gulimall.wms.dao.WareSkuDao;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +37,34 @@ import com.atguigu.gulimall.wms.service.WareSkuService;
 public class WareSkuController {
     @Autowired
     private WareSkuService wareSkuService;
+
+    @Autowired
+    private WareSkuDao wareSkuDao;
+
+
+    @ApiOperation("用于远程调用查询某个sku的库存信息")
+    @PostMapping("/skuIds/up")
+    public Resp<List<SkuStockVo>> getStock(@RequestBody List<Long> skuIds){
+
+        List<SkuStockVo> stockVos = new ArrayList<>();
+
+        List<WareSkuEntity> wareSkuEntityList = wareSkuDao.selectList(new QueryWrapper<WareSkuEntity>().in("sku_id", skuIds));
+
+        wareSkuEntityList.forEach(wareSkuEntity -> {
+
+            SkuStockVo skuStockVo = new SkuStockVo();
+
+            skuStockVo.setSkuId(wareSkuEntity.getSkuId());
+
+            skuStockVo.setStock(wareSkuEntity.getStock());
+
+            stockVos.add(skuStockVo);
+
+        });
+
+        return Resp.ok(stockVos);
+
+    }
 
     ///wms/waresku/sku/1
 

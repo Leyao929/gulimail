@@ -1,12 +1,15 @@
 package com.atguigu.gulimall.sms.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
 import com.atguigu.gulimall.commons.bean.PageVo;
 import com.atguigu.gulimall.commons.bean.QueryCondition;
 import com.atguigu.gulimall.commons.bean.Resp;
+import com.atguigu.gulimall.commons.to.SkuSaleInfoTo;
+import com.atguigu.gulimall.sms.entity.SkuLadderEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +31,7 @@ import com.atguigu.gulimall.sms.service.SkuBoundsService;
  */
 @Api(tags = "商品sku积分设置 管理")
 @RestController
-@RequestMapping("sms/skubounds")
+@RequestMapping("/sms/skubounds")
 public class SkuBoundsController {
     @Autowired
     private SkuBoundsService skuBoundsService;
@@ -44,6 +47,22 @@ public class SkuBoundsController {
 
         return Resp.ok(page);
     }
+
+
+
+    @PostMapping("/saleInfo/save")
+    public Resp<Object> saveSaleInfo(@RequestBody List<SkuSaleInfoTo> skuSaleInfoTos) {
+
+
+        skuBoundsService.saveSaleInfo(skuSaleInfoTos);
+
+
+
+        return Resp.ok(null);
+    }
+
+
+
 
 
     /**
